@@ -1,0 +1,19 @@
+name: Diabetes Prediction - CI
+conda_env: conda.yaml
+
+experiment:
+  name: Diabetes Prediction - Workflow CI
+
+entry_points:
+  main:
+    parameters:
+      data_path: {type: str, default: "diabetes_preprocessing.csv"}
+      scaler_path: {type: str, default: "scaler.pkl"}
+      n_iter: {type: int, default: 30}
+      cv_folds: {type: int, default: 5}
+    command: >
+      python modelling.py
+      --data_path {data_path}
+      --scaler_path {scaler_path}
+      --n_iter {n_iter}
+      --cv_folds {cv_folds}
